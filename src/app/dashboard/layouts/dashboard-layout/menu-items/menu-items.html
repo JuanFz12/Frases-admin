@@ -1,0 +1,28 @@
+<div class="flex flex-col select-none ">
+    <!-- Nodo -->
+    <div [routerLink]="node.link" class="flex items-center gap-2 py-1 px-2 cursor-pointer rounded-md hover:bg-gray-100 transition-all"
+        (click)="toggleExpand()">
+        @if (node.icon) {
+        <span class="material-icons w-6 h-6 text-gray-600">
+            {{ node.icon }}
+        </span>
+        }
+        <span class="text-gray-800" >{{ node.name }}</span>
+
+        @if (node.children?.length) {
+        <span class="material-icons ml-auto text-gray-500 text-xs">
+            {{ expanded() ? 'expand_less' : 'expand_more' }}
+        </span>
+        }
+    </div>
+
+    <!-- Subnodos -->
+    <div [class.max-h-0]="!expanded()" [class.max-h-[500px]]="expanded()"
+        class="pl-4 border-l border-gray-200 overflow-hidden transition-[max-height] duration-300 ease-in-out">
+        @if (node.children?.length) {
+        @for (child of node.children; track child.name) {
+        <app-menu-items [node]="child"></app-menu-items>
+        }
+        }
+    </div>
+</div>

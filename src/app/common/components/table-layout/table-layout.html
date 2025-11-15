@@ -1,0 +1,17 @@
+<div class="mb-8 flex flex-col gap-12 relative bg-clip-border rounded-xl bg-white p-6 px-0 pt-0 pb-2">
+    <table class="w-full min-w-[640px] table-auto">
+        <thead class="bg-neutral-500">
+            <tr>
+                @for (header of headers(); track $index) {
+                <th class="px-4 py-2 border border-gray-300 text-left font-semibold">
+                    {{ header }}
+                </th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            <ng-content select="[tableBody]"></ng-content>
+        </tbody>
+    </table>
+
+</div>

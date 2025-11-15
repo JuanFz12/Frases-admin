@@ -1,0 +1,34 @@
+<div class="layout-container" [class.is-mobile]="isMobile()">
+    <mat-sidenav-container class="sidenav-container no-scrollbar">
+
+        <mat-sidenav #snav [mode]="isMobile() ? 'over' : 'side'" [opened]="!isMobile()">
+            <div class="no-scrollbar">
+                <mat-nav-list class="no-scrollbar">
+                    <div class="flex justify-end ">
+                        <button class="py-1 px-2 cursor-pointer" (click)="toggleDrawer()">
+                            <mat-icon class="p-0 m-0">menu</mat-icon>
+                        </button>
+                    </div>
+                    @for (route of APP_ROUTES; track route) {
+                    <app-menu-items [node]="route"></app-menu-items>
+                    }
+                </mat-nav-list>
+            </div>
+        </mat-sidenav>
+
+        <mat-sidenav-content class="">
+            <div class="flex flex-row">
+                @if (!isDrawerOpen()||isMobile()) {
+                <div>
+                    <button mat-icon-button (click)="toggleDrawer()">
+                        <mat-icon>menu</mat-icon>
+                    </button>
+                </div>
+                }
+                <div class="flex-1 w-screen h-screen p-4 overflow-auto">
+                    <router-outlet />
+                </div>
+            </div>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>
