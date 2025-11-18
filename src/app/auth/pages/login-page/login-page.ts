@@ -15,10 +15,12 @@ export class LoginPage {
 
   private _fb = inject(FormBuilder);
   myForm: FormGroup = this._fb.group({
-    phrase: ["", [Validators.required, Validators.minLength(10)]],
-    color: ["", [Validators.required, Validators.minLength(4)]],
+    email: ['', [Validators.required, Validators.pattern(FormUtils.emailPattern)]],
+    password: ["", [Validators.required]],
   });
   formUtils = FormUtils;
+  emailMessages = this.formUtils.getPatternMessage('El correo no tiene un formato válido');
+
 
   onsubmit() {
     if (this.myForm.invalid) {

@@ -1,10 +1,22 @@
 @if (variant() === 'input') {
-<input class="p-2 bg-white rounded-lg border border-gray-300 w-full focus:outline-none focus:border-blue-500"
-    [type]="type()" [name]="name()" [placeholder]="placeholder()" [disabled]="disabled()" [value]="value()"
+<input [class]="
+    'p-2 bg-white rounded-lg border w-full focus:outline-none focus:border-blue-500 placeholder:text-[#19233080]' +
+    (error() ? ' border-red-500 focus:border-red-600' : ' focus:border-blue-500 border-[#BEC4CB]')
+  " [type]="type()" [name]="name()" [placeholder]="placeholder()" [disabled]="disabled()" [value]="value()"
     (input)="onInput($event)" (blur)="handleBlur()" />
 }
+
 @if (variant() === 'textarea') {
-<textarea class="p-2 bg-white rounded-lg border border-gray-300 w-full min-h-32 resize-y" [name]="name()"
-    [placeholder]="placeholder()" [disabled]="disabled()" (input)="onInput($event)"
-    (blur)="handleBlur()">{{ value() }}</textarea>
+<textarea
+  [class]="
+    'p-2 bg-white rounded-lg border w-full min-h-32 resize-y focus:outline-none ' +
+    (error() ? 'border-red-500 focus:border-red-600' : 'border-[#BEC4CB] focus:border-blue-500')
+  "
+  [name]="name()"
+  [placeholder]="placeholder()"
+  [disabled]="disabled()"
+  [value]="value()"
+  (input)="onInput($event)"
+  (blur)="handleBlur()"
+></textarea>
 }

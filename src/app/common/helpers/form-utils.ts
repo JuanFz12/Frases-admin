@@ -27,6 +27,8 @@ export const DEFAULT_ERROR_MESSAGES: Record<string, (error: any) => string> = {
 };
 
 export class FormUtils {
+    static emailPattern = '^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$';
+    static passwordPattern = /(?:(?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/;
     static getErrorMessage(
         errors: ValidationErrors | null | undefined,
         customMap?: Record<string, (e: any) => string>
@@ -46,7 +48,9 @@ export class FormUtils {
     static getControl(form: FormGroup, field: string): AbstractControl | null {
         return form.get(field) ?? null;
     }
-
+    static getPatternMessage(message: string) {
+        return { pattern: () => message };
+    }
     static showError(form: FormGroup, field: string): boolean {
         const c = this.getControl(form, field);
         return !!c && c.invalid && (c.touched);

@@ -13,6 +13,7 @@ export class ThemedInput {
   value = model<string>('');
   variant = input<'input' | 'textarea'>('input');
   disabled = signal(false);
+  error = input<boolean>(false);
 
   constructor(private ngControl: NgControl) {
     ngControl.valueAccessor = {

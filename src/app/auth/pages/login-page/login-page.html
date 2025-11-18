@@ -1,17 +1,43 @@
-<form [formGroup]="myForm" class="space-y-4" (ngSubmit)="onsubmit()">
-    <app-themed-input formControlName="phrase" placeholder="Escriba la frase" variant="textarea" name="phrase" />
-    @if (formUtils.showError(myForm, 'phrase')) {
-    <app-theme-text variant="label" tagName="span" class="text-red-500 ">
-        {{formUtils.getFieldError(myForm, 'phrase')}}
-    </app-theme-text>
-    }
-    <app-themed-input formControlName="color" placeholder="Color" type="text" name="color" />
-    @if (formUtils.showError(myForm, 'color')) {
-    <app-theme-text variant="label" class="text-red-500" tagName="span">
-        {{formUtils.getFieldError(myForm, 'color')}}
-    </app-theme-text>
-    }
-    <app-theme-button class="w-3xs" type="submit" [loading]="false" variant="primary">
-        <app-theme-text variant="label" class="text-white font-semibold">Nuevo usuario</app-theme-text>
-    </app-theme-button>
-</form>
+<div class="min-h-screen flex items-center justify-center bg-gray-50 p-4">
+
+    <div class="w-full max-w-md bg-white shadow-lg rounded-xl p-8 border border-gray-200">
+        <app-theme-text variant="title" tagName="h1" class="text-center mb-6 font-medium text-gray-800">
+            Iniciar Sesión
+        </app-theme-text>
+
+        <form [formGroup]="myForm" (ngSubmit)="onsubmit()">
+
+
+            <section class="flex flex-col space-y-4">
+                <!-- EMAIL -->
+                <app-themed-input formControlName="email" placeholder="Ingrese su correo electrónico" name="email"
+                    [error]="formUtils.showError(myForm, 'email')" />
+                @if (formUtils.showError(myForm, 'email')) {
+                <app-theme-text variant="label" tagName="span" class="text-red-500 text-sm">
+                    {{ formUtils.getFieldError(myForm, 'email', emailMessages) }}
+                </app-theme-text>
+                }
+                <!-- PASSWORD -->
+                <app-themed-input formControlName="password" placeholder="Ingrese su contraseña" type="password"
+                    name="password" [error]="formUtils.showError(myForm, 'password')" />
+                @if (formUtils.showError(myForm, 'password')) {
+                <app-theme-text variant="label" tagName="span" class="text-red-500 text-sm">
+                    {{ formUtils.getFieldError(myForm, 'password') }}
+                </app-theme-text>
+                }
+            </section>
+
+
+
+
+            <!-- SUBMIT -->
+            <app-theme-button class="w-full mt-4" type="submit" [loading]="false" variant="primary">
+                <app-theme-text variant="label" class="text-white font-semibold">
+                    Iniciar Sesión
+                </app-theme-text>
+            </app-theme-button>
+
+        </form>
+    </div>
+
+</div>
