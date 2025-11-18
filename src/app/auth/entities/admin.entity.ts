@@ -1,4 +1,4 @@
-import { User } from "../../common/interfaces";
+import { User } from "@common/interfaces";
 
 export class AdminEntity {
     readonly id: number;

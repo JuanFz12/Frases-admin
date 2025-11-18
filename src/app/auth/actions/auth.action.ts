@@ -1,12 +1,11 @@
 import { HttpClient } from "@angular/common/http";
 import { inject, Injectable } from "@angular/core";
-import { BackendResponse, User } from "../../common/interfaces";
 import { firstValueFrom, map } from "rxjs";
-import { unwrapResponse } from "../../common/helpers";
-import { AdminEntity } from "../entities/admin.entity";
-import { HttpApiError } from "../../common/helpers/custom-error";
 import { environment } from "../../../environments/environment";
-import { LoginResponse } from "../models";
+import { BackendResponse, User } from "@common/interfaces";
+import { HttpApiError, unwrapResponse } from "@common/helpers";
+import { AdminEntity } from "@auth/entities";
+import { LoginResponse } from "@auth/models";
 const baseUrl = environment.apiUrl;
 @Injectable({ providedIn: 'root' })
 export class AuthActions {

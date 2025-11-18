@@ -1,5 +1,5 @@
-import { Component, input, OnInit } from '@angular/core';
-import { DynamicTagDirective } from '../../helpers/dynamic-tag';
+import { Component, input,  } from '@angular/core';
+import { DynamicTagDirective } from '@common/helpers';
 @Component({
   selector: 'app-theme-text',
   templateUrl: './theme-text.html',

@@ -7,9 +7,10 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { Router, RouterOutlet } from '@angular/router';
 import { MenuItems } from "./menu-items/menu-items";
 import { A11yModule } from "@angular/cdk/a11y";
-import { APP_ROUTES } from '../../../common/constants';
-import { ThemeText } from "../../../common/theme/theme-text/theme-text";
-import { AuthService } from '../../../auth/services/auth.service';
+import { AuthService } from '@auth/services';
+import { APP_ROUTES } from '@common/constants';
+import { ThemeText } from '@common/theme';
+
 @Component({
   selector: 'app-dashboard-layout',
   imports: [MatToolbarModule, MatButtonModule, MatIconModule, MatSidenavModule, MatListModule, RouterOutlet, MenuItems, A11yModule, ThemeText],

@@ -1,15 +1,14 @@
 import { Component, inject } from '@angular/core';
-import { ThemedInput } from "../../../common/theme/theme-input/theme-input";
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ThemeButton } from "../../../common/theme/theme-button/theme-button";
-import { ThemeText } from "../../../common/theme/theme-text/theme-text";
-import { FormUtils } from '../../../common/helpers/form-utils';
-import { AuthService } from '../../services/auth.service';
+
 import { Router } from '@angular/router';
+import { AuthService } from '@auth/services';
+import { FormUtils } from '@common/helpers';
+import { ThemeButton, ThemedInput, ThemeText } from '@common/theme';
 
 @Component({
   selector: 'app-login-page',
-  imports: [ThemedInput, ReactiveFormsModule, ThemeButton, ThemeText,],
+  imports: [ThemedInput, ReactiveFormsModule, ThemeButton, ThemeText],
   templateUrl: './login-page.html',
   styles: ``,
 })

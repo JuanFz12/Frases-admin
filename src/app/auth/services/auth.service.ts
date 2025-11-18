@@ -1,8 +1,8 @@
 import { computed, inject, Injectable, signal } from "@angular/core";
+import { AuthActions } from "@auth/actions/auth.action";
+import { HttpApiError } from "@common/helpers";
+import { User } from "@common/interfaces";
 import { injectMutation, QueryClient } from "@tanstack/angular-query-experimental";
-import { HttpApiError } from "../../common/helpers/custom-error";
-import { User } from "../../common/interfaces";
-import { AuthActions } from "../actions/auth.action";
 
 type AuthStatus = 'checking' | 'authenticated' | 'not-authenticated';
 

@@ -1,6 +1,6 @@
 import { HttpHandlerFn, HttpRequest } from "@angular/common/http";
 import { inject } from "@angular/core";
-import { AuthService } from "../../auth/services/auth.service";
+import { AuthService } from "@auth/services";
 
 export function authInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn) {
     // Inject the current `AuthService` and use it to get an authentication token:
