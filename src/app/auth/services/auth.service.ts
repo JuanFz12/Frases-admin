@@ -18,6 +18,7 @@ export class AuthService {
     errorMessage = computed(this._errorMessage);
 
     token = computed(this._token);
+    user = computed(this._user);
     authStatus = computed<AuthStatus>(() => {
         if (this._authStatus() === 'checking') return 'checking';
 
@@ -50,7 +51,7 @@ export class AuthService {
     checkStatus = injectMutation(() => ({
         mutationFn: () => this.authActions.checkStatus(),
         onSuccess: (resp) => {
-            console.log({resp})
+            console.log({ resp })
             this.handleAuthSuccess(resp);
         },
 

@@ -1,27 +1,54 @@
 <div class="layout-container" [class.is-mobile]="isMobile()">
+
     <mat-sidenav-container class="sidenav-container no-scrollbar">
 
         <mat-sidenav #snav [mode]="isMobile() ? 'over' : 'side'" [opened]="!isMobile()">
-            <div class="no-scrollbar">
-                <mat-nav-list class="no-scrollbar">
-                    <div class="flex justify-end ">
-                        <button class="py-1 px-2 cursor-pointer" (click)="toggleDrawer()">
-                            <mat-icon class="p-0 m-0">menu</mat-icon>
-                        </button>
-                    </div>
+            <div class="no-scrollbar h-full flex flex-col">
+                <div class="flex justify-center px-4 py-2">
+                    <section class="rounded-lg flex flex-1 justify-center items-center">
+                        <app-theme-text variant="title" tagName="h1" class="font-semibold text-white text-center">
+                            FRASES
+                        </app-theme-text>
+                    </section>
+                    <button class="py-1 px-2 cursor-pointer text-white" (click)="toggleDrawer()">
+                        <mat-icon class="p-0 m-0">menu</mat-icon>
+                    </button>
+                </div>
+
+                <section class="gap-2 py-1 my-4 mx-2.5 space-y-2 flex flex-col border-b border-white">
+                    <app-theme-text variant="subtitle" tagName="h2" class="text-white font-medium">
+                        Sistema
+                    </app-theme-text>
+                    <app-theme-text class="text-white" variant="label" tagName="h3">
+                        Hola, Admin {{user()?.name}}
+                    </app-theme-text>
+                </section>
+
+                <div class="flex-1 overflow-auto">
                     @for (route of APP_ROUTES; track route) {
                     <app-menu-items [node]="route"></app-menu-items>
                     }
-                </mat-nav-list>
+                </div>
+
+                <div class="mt-auto px-4 py-2">
+                    <button (click)="logout()" type="button"
+                        class="flex items-center gap-2 text-white mb-2 cursor-pointer hover:opacity-70 transition-all">
+                        <mat-icon>logout</mat-icon>
+                        <app-theme-text class=" text-white" variant="subtitle" tagName="h2">
+                            Cerrar Sesión
+                        </app-theme-text>
+                    </button>
+                </div>
             </div>
         </mat-sidenav>
+
 
         <mat-sidenav-content class="">
             <div class="flex flex-row">
                 @if (!isDrawerOpen()||isMobile()) {
-                <div>
-                    <button mat-icon-button (click)="toggleDrawer()">
-                        <mat-icon>menu</mat-icon>
+                <div class="bg-palette-primary">
+                    <button class="py-1 px-2 cursor-pointer text-white " (click)="toggleDrawer()">
+                        <mat-icon class="p-0 m-0">menu</mat-icon>
                     </button>
                 </div>
                 }
@@ -31,4 +58,5 @@
             </div>
         </mat-sidenav-content>
     </mat-sidenav-container>
+
 </div>

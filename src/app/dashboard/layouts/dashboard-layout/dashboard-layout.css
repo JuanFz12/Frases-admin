@@ -4,6 +4,9 @@
   width: 100%;
   position: relative;
 }
+.layout-container mat-sidenav {
+  border-radius: 0 !important;
+}
 
 .sidenav-container {
   flex: 1;
@@ -12,10 +15,10 @@
 }
 
 mat-sidenav {
-  width: 250px;
-  background: #f9f9f9;
+  width: 280px;
+  background: #3E4784;
   border-right: 1px solid #ddd;
-overflow-x: hidden;
+  overflow-x: hidden;
 }
 
 /* Responsive behavior */

@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component, Input, signal } from '@angular/core';
 import { RouterLink } from "@angular/router";
 import { AppRoutes } from '../../../../common/constants';
+import { ThemeText } from "../../../../common/theme/theme-text/theme-text";
 @Component({
   selector: 'app-menu-items',
-  imports: [RouterLink],
+  imports: [RouterLink, ThemeText],
   templateUrl: './menu-items.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   styles: ``
