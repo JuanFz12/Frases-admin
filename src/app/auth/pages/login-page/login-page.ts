@@ -1,11 +1,32 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { ThemedInput } from "../../../common/theme/theme-input/theme-input";
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ThemeButton } from "../../../common/theme/theme-button/theme-button";
+import { ThemeText } from "../../../common/theme/theme-text/theme-text";
+import { FormUtils } from '../../../common/helpers/form-utils';
 
 @Component({
   selector: 'app-login-page',
-  imports: [],
+  imports: [ThemedInput, ReactiveFormsModule, ThemeButton, ThemeText,],
   templateUrl: './login-page.html',
   styles: ``,
 })
 export class LoginPage {
 
+  private _fb = inject(FormBuilder);
+  myForm: FormGroup = this._fb.group({
+    phrase: ["", [Validators.required, Validators.minLength(10)]],
+    color: ["", [Validators.required, Validators.minLength(4)]],
+  });
+  formUtils = FormUtils;
+
+  onsubmit() {
+    if (this.myForm.invalid) {
+      this.myForm.markAllAsTouched();
+      return;
+    }
+    console.log(this.myForm.value)
+    this.myForm.reset({ phrase: '', color: '' });
+
+  }
 }

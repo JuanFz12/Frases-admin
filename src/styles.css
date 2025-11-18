@@ -2,3 +2,42 @@
 @import "tailwindcss";
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+@layer components {
+  .regular-text-title {
+    font-size: 2rem;
+    line-height: 1.75rem;
+    font-family: var(--font-inter);
+  }
+  /* 24px */
+  .regular-text-3xl {
+    font-size: 1.5rem;
+    line-height: 1.25rem;
+    font-family: var(--font-inter);
+  }
+    /* 20px */
+  .regular-text-xl {
+    font-size: 1.25rem;
+    line-height: 1.25rem;
+    font-family: var(--font-inter);
+  }
+  /* 16px */
+  .regular-text-l {
+    font-size: 1rem;
+    line-height: 24px;
+    font-family: var(--font-inter);
+  }
+/* 14px  */
+  .regular-text-m {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-family: var(--font-inter);
+    font-style: normal;
+  }
+  /* 12px */
+    .regular-text-s {
+    font-size: 0.750rem;
+    line-height: 1.125rem;
+    font-family: var(--font-inter);
+    font-style: normal;
+  }
+}

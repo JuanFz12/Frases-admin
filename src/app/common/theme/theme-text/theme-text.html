@@ -1,0 +1,7 @@
+<div [dynamicTag]="tagName()" [class]="classes + ' ' + class()">
+  @if (text()) {
+    {{ text() }}
+  } @else {
+    <ng-content></ng-content>
+  }
+</div>

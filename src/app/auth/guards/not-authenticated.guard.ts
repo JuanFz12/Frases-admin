@@ -7,9 +7,10 @@ export const NotAuthenticatedGuard: CanMatchFn = async (
     segments: UrlSegment[]
 ) => {
     const authService = inject(AuthService);
+    const token = authService.token();
     const { mutateAsync } = authService.checkStatus;
     const router = inject(Router);
-    if (!authService.token()) {
+    if (!token) {
         return true;
     }
     try {

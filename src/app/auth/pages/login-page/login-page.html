@@ -1,1 +1,17 @@
-<p>login-page works!</p>
+<form [formGroup]="myForm" class="space-y-4" (ngSubmit)="onsubmit()">
+    <app-themed-input formControlName="phrase" placeholder="Escriba la frase" variant="textarea" name="phrase" />
+    @if (formUtils.showError(myForm, 'phrase')) {
+    <app-theme-text variant="label" tagName="span" class="text-red-500 ">
+        {{formUtils.getFieldError(myForm, 'phrase')}}
+    </app-theme-text>
+    }
+    <app-themed-input formControlName="color" placeholder="Color" type="text" name="color" />
+    @if (formUtils.showError(myForm, 'color')) {
+    <app-theme-text variant="label" class="text-red-500" tagName="span">
+        {{formUtils.getFieldError(myForm, 'color')}}
+    </app-theme-text>
+    }
+    <app-theme-button class="w-3xs" type="submit" [loading]="false" variant="primary">
+        <app-theme-text variant="label" class="text-white font-semibold">Nuevo usuario</app-theme-text>
+    </app-theme-button>
+</form>
