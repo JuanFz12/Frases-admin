@@ -31,11 +31,16 @@
 
 
             <!-- SUBMIT -->
-            <app-theme-button class="w-full mt-4" type="submit" [loading]="false" variant="primary">
+            <app-theme-button class="w-full mt-4" type="submit" [loading]="loginMutation.isPending()" variant="primary">
                 <app-theme-text variant="label" class="text-white font-semibold">
                     Iniciar Sesión
                 </app-theme-text>
             </app-theme-button>
+            @if (errorMessage()?.message) {
+            <div class="mt-2 text-sm text-red-600">
+                {{ errorMessage()?.message }}
+            </div>
+            }
 
         </form>
     </div>

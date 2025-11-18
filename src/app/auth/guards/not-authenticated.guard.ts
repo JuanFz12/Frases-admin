@@ -15,8 +15,7 @@ export const NotAuthenticatedGuard: CanMatchFn = async (
     }
     try {
         await mutateAsync();
-        router.navigateByUrl('/admin');
-        return false;
+        return router.navigateByUrl('/admin');
     } catch (err) {
         return true;
     }

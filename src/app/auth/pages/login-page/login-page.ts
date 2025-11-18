@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { ThemeButton } from "../../../common/theme/theme-button/theme-button";
 import { ThemeText } from "../../../common/theme/theme-text/theme-text";
 import { FormUtils } from '../../../common/helpers/form-utils';
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
@@ -14,21 +16,30 @@ import { FormUtils } from '../../../common/helpers/form-utils';
 export class LoginPage {
 
   private _fb = inject(FormBuilder);
+  private _authService = inject(AuthService);
   myForm: FormGroup = this._fb.group({
     email: ['', [Validators.required, Validators.pattern(FormUtils.emailPattern)]],
     password: ["", [Validators.required]],
   });
   formUtils = FormUtils;
   emailMessages = this.formUtils.getPatternMessage('El correo no tiene un formato válido');
-
-
-  onsubmit() {
+  loginMutation = this._authService.login;
+  errorMessage = this._authService.errorMessage;
+  private router = inject(Router);
+  async onsubmit() {
     if (this.myForm.invalid) {
       this.myForm.markAllAsTouched();
       return;
     }
-    console.log(this.myForm.value)
-    this.myForm.reset({ phrase: '', color: '' });
-
+    try {
+      await this.loginMutation.mutateAsync({
+        email: this.myForm.controls['email'].value,
+        password: this.myForm.controls['password'].value,
+      });
+      this.router.navigateByUrl('/admin', { replaceUrl: true });
+      this.myForm.reset({ email: '', password: '' });
+    } catch (err) {
+      console.log(err);
+    }
   }
 }

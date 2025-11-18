@@ -3,7 +3,7 @@ import { NotAuthenticatedGuard } from './auth/guards/not-authenticated.guard';
 
 export const routes: Routes = [
     {
-        path: '',
+        path: 'auth',
         loadChildren: () => import('./auth/auth.routes'),
         canMatch: [
             NotAuthenticatedGuard
@@ -13,8 +13,5 @@ export const routes: Routes = [
         path: 'admin',
         loadChildren: () => import('./dashboard/dashboard.routes'),
     },
-   /*  {
-        path: '',
-        redirectTo: 'auth',
-    } */
+    { path: '**', redirectTo: 'auth' }
 ];

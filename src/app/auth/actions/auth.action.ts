@@ -30,7 +30,6 @@ export class AuthActions {
                 err?.response?.status ??
                 err?.error?.status ??
                 500;
-            console.log({ status })
             throw new HttpApiError(status, message);
         }
     }

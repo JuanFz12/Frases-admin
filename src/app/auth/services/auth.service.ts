@@ -40,12 +40,17 @@ export class AuthService {
         },
         onError: (err: HttpApiError) => {
             this._authStatus.set('not-authenticated');
+            this._errorMessage.set({
+                message: err.message ?? 'Credenciales incorrectas',
+                status: err.status ?? 400,
+            });
             console.error('❌ Error login', err.message);
         }
     }));
     checkStatus = injectMutation(() => ({
         mutationFn: () => this.authActions.checkStatus(),
         onSuccess: (resp) => {
+            console.log({resp})
             this.handleAuthSuccess(resp);
         },
 
@@ -60,7 +65,6 @@ export class AuthService {
         this._user.set(user);
         this._authStatus.set('authenticated');
         this._token.set(token);
-
         localStorage.setItem('token', token);
 
         return true;
