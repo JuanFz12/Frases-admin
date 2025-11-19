@@ -20,6 +20,9 @@
       "@common/*": [
         "./src/app/common/*"
       ],
+      "@features/*": [
+        "./src/features/*"
+      ],
     },
     "strict": true,
     "noImplicitOverride": true,

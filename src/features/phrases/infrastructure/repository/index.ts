@@ -1,9 +1,9 @@
 import { Pagination, PaginationParams } from "@common/interfaces";
 import { PhraseAttributes, corePhraseFields, PhraseUpdate } from "../../domain/entities";
 import { PhrasesRepository } from "../../domain/repository";
-import { inject } from "@angular/core";
+import { inject, Injectable } from "@angular/core";
 import { PhrasesDataSource } from "../../domain/datasource";
-
+@Injectable()
 export class PhrasesRepositoryImpl implements PhrasesRepository {
     private readonly datasource = inject(PhrasesDataSource)
     async getPhrases(paginationParams: PaginationParams): Promise<{ pagination: Pagination; phrases: PhraseAttributes[]; }> {

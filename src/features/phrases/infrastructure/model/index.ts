@@ -9,4 +9,5 @@ export interface PhraseModelResponse {
     id: number;
     text: string;
     color: string;
+    updatedAt: Date;
 }

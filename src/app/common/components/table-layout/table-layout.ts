@@ -1,8 +1,9 @@
 import { Component, contentChild, input } from '@angular/core';
+import { ThemeText } from "@common/theme";
 
 @Component({
   selector: 'app-table-layout',
-  imports: [],
+  imports: [ThemeText],
   templateUrl: './table-layout.html',
   styles: ``
 })

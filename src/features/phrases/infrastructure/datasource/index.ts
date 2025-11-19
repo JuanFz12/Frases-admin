@@ -9,7 +9,7 @@ import { HttpApiError, unwrapResponse } from '@common/helpers';
 import { PhrasesModelResponse } from '../model';
 const baseUrl = environment.apiUrl;
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class PhrasesDataSourceImpl implements PhrasesDataSource {
     private http = inject(HttpClient);
     async getPhrases({ limit, page }: PaginationParams): Promise<{ pagination: Pagination; phrases: PhraseAttributes[]; }> {
@@ -19,7 +19,7 @@ export class PhrasesDataSourceImpl implements PhrasesDataSource {
                     this.http.get<BackendResponse<PhrasesModelResponse>>(`${baseUrl}/phrases`, {
                         params: { limit, page },
                     })
-                ).pipe(map((res) => ({ phrases: res.phrases.map(Phrase.toJson), pagination: res.pagination })))
+                ).pipe(map((res) => ({ phrases: res.phrases.map((phrase) => Phrase.toJson(phrase)), pagination: res.pagination })))
             );
             return { pagination: response.pagination, phrases: response.phrases };
         } catch (err: any) {
