@@ -4,3 +4,6 @@ export interface User {
     status: string;
     email: string;
 }
+
+export type CoreUser = Omit<User, 'id'>;
+export type UpdateUser = Partial<CoreUser>;

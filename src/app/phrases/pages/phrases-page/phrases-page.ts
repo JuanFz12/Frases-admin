@@ -21,7 +21,6 @@ import { ScreenHeader } from "@dashboard/components/screen-header/screen-header"
 })
 export class PhrasesPage {
   phrasesService = inject(PhrasesService);
-  updatedAt = new Date();
   columns = [
     { key: 'id', label: 'ID' },
     { key: 'phrase', label: 'Frase' },
