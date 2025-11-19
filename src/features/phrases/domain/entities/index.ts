@@ -18,7 +18,6 @@ export class Phrase {
         this.updatedAt = props.updatedAt;
     }
     static toJson(user: PhraseAttributes) {
-        console.log({user})
         return {
             id: user.id,
             text: user.text,

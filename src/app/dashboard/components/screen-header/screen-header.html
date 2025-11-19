@@ -28,9 +28,14 @@
             </app-theme-button>
             }
             <app-theme-button class="w-3xs h-9" type="button" [loading]="false" variant="primary">
-                <app-theme-text variant="label" class="text-white font-semibold">
-                    Crear
-                </app-theme-text>
+                <div class="flex flex-row items-center justify-center gap-1 h-9">
+                    <mat-icon class="text-white! text-[15px]! h-auto!">
+                        add_circle_outline
+                    </mat-icon>
+                    <app-theme-text variant="label" class="text-white font-semibold">
+                        {{ createText() }}
+                    </app-theme-text>
+                </div>
             </app-theme-button>
         </div>
         }

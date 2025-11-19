@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { ScreenHeader } from "@dashboard/components/screen-header/screen-header";
 
 @Component({
   selector: 'users-page',
-  imports: [],
+  imports: [ScreenHeader],
   templateUrl: './users-page.html',
   styles: ``,
 })

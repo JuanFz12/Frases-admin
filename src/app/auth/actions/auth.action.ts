@@ -20,7 +20,6 @@ export class AuthActions {
                     user: new AdminEntity({ id: user.id, name: user.name, email: user.email, status: user.status })
                 })))
             );
-            console.log({response})
             return response;
         } catch (err: any) {
             const message = `${err.error.message} Reason: ${err.error.error}`;

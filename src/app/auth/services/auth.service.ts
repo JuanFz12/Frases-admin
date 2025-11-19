@@ -51,7 +51,6 @@ export class AuthService {
     checkStatus = injectMutation(() => ({
         mutationFn: () => this.authActions.checkStatus(),
         onSuccess: (resp) => {
-            console.log({ resp })
             this.handleAuthSuccess(resp);
         },
 
