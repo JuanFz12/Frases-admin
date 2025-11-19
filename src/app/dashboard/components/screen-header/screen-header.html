@@ -1,0 +1,38 @@
+<div class="flex flex-col justify-between mb-6 space-y-4">
+    <div class="flex flex-row justify-between">
+        <app-theme-text variant="title" class="text-[#101828] font-semibold" tagName="h1">
+            {{ title() }}
+        </app-theme-text>
+        @if (showExport()) {
+        <app-theme-button class="w-24 h-9" type="button" [loading]="false" variant="secondary">
+            <app-theme-text variant="label" class="text-palette-primary font-semibold">
+                Exportar
+            </app-theme-text>
+        </app-theme-button>
+        }
+    </div>
+
+    <div class="flex gap-2 justify-between">
+        <form [formGroup]="myForm">
+            <div class="w-80">
+                <app-themed-input formControlName="search" class="" placeholder="Buscar" type="text" name="search" />
+            </div>
+        </form>
+        @if (showCreate()) {
+        <div class="flex flex-row items-center gap-4">
+            @if (showImport()) {
+            <app-theme-button class="w-32 h-9" type="button" [loading]="false" variant="secondary">
+                <app-theme-text variant="label" class="text-palette-primary font-semibold">
+                    Importar excel
+                </app-theme-text>
+            </app-theme-button>
+            }
+            <app-theme-button class="w-3xs h-9" type="button" [loading]="false" variant="primary">
+                <app-theme-text variant="label" class="text-white font-semibold">
+                    Crear
+                </app-theme-text>
+            </app-theme-button>
+        </div>
+        }
+    </div>
+</div>

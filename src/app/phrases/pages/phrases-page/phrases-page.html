@@ -5,6 +5,7 @@
     An error has occurred: {{ phrasesService.query.error()?.message }}
 </div>
 } @else {
+<app-screen-header title="Frases" [showCreate]="true" [showImport]="true" [showExport]="true"/>
 <app-table-layout [headers]="a">
     <ng-container tableBody>
         @for (phrase of phrasesService.query.data()?.phrases; track phrase.id) {
@@ -19,7 +20,8 @@
                 <color-box [color]="phrase.color"></color-box>
             </td>
             <td appTableRow>
-                <app-theme-text variant="label" class="text-[#101828] font-medium"> {{ phrase.updatedAt.toLocaleDateString()}}
+                <app-theme-text variant="label" class="text-[#101828] font-medium"> {{
+                    phrase.updatedAt.toLocaleDateString()}}
                 </app-theme-text>
             </td>
         </tr>
