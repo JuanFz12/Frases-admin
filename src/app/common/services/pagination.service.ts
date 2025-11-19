@@ -13,10 +13,10 @@ export class PaginationService {
     ), { initialValue: 1 });
     currentLimit = toSignal(
         this.activatedRoute.queryParamMap.pipe(
-            map(params => Number(params.get('limit') ?? 10)),
-            map(limit => (isNaN(limit) || limit <= 0 ? 10 : limit))
+            map(params => Number(params.get('limit') ?? 5)),
+            map(limit => (isNaN(limit) || limit <= 0 ? 5 : limit))
         ),
-        { initialValue: 10 }
+        { initialValue: 5 }
     );
 
     setQueryParams(params: { page?: number; limit?: number }) {

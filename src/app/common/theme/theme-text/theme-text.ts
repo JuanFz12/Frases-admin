@@ -1,4 +1,4 @@
-import { Component, input,  } from '@angular/core';
+import { Component, input, } from '@angular/core';
 import { DynamicTagDirective } from '@common/helpers';
 @Component({
   selector: 'app-theme-text',
@@ -10,7 +10,7 @@ import { DynamicTagDirective } from '@common/helpers';
 export class ThemeText {
   text = input<string | null>(null);
 
-  variant = input<'title' | 'subtitle' | 'label' | 'paragraph' | 'small'>('paragraph');
+  variant = input<'title' | 'smallTitle' | 'subtitle' | 'label' | 'paragraph' | 'small'>('paragraph');
   color = input<string>('text-gray-900');
   weight = input<string>('font-normal');
   tagName = input<'p' | 'span' | 'label' | 'h1' | 'h2' | 'h3'>('p');
@@ -22,6 +22,7 @@ export class ThemeText {
     const variants = {
       title: 'regular-text-title',
       subtitle: 'regular-text-xl',
+      smallTitle: "regular-text-3xl",
       label: 'regular-text-m',
       paragraph: 'regular-text-l',
       small: 'regular-text-s',

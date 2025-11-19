@@ -1,0 +1,17 @@
+<mat-dialog-content class="py-4">
+    @if (portal) {
+    <ng-container >
+        <ng-template cdkPortalOutlet [cdkPortalOutlet]="portal"></ng-template>
+    </ng-container>
+    }
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    @if(actionsPortal){
+    <ng-container>
+        <ng-template cdkPortalOutlet [cdkPortalOutlet]="actionsPortal"></ng-template>
+    </ng-container>
+    }
+
+</mat-dialog-actions>

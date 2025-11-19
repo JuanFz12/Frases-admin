@@ -5,8 +5,9 @@
     An error has occurred: {{ phrasesService.query.error()?.message }}
 </div>
 } @else {
-<app-screen-header title="Frases" [showCreate]="true" [showImport]="true" [showExport]="true" createText="Nueva frase"/>
-<app-table-layout [headers]="a">
+<app-screen-header title="Frases" [showCreate]="true" [showImport]="true" [showExport]="true" createText="Nueva frase"
+    (onCreate)="openCreateModal()" />
+<app-table-layout [headers]="headers">
     <ng-container tableBody>
         @for (phrase of phrasesService.query.data()?.phrases; track phrase.id) {
         <tr class="border-b border-neutral-300">

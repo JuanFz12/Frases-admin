@@ -1,4 +1,4 @@
-import { Component, input, signal } from '@angular/core';
+import { Component, input, output, signal } from '@angular/core';
 export type ButtonVariant =
   | 'primary'
   | 'secondary'
@@ -19,9 +19,13 @@ export class ThemeButton {
   loading = input<boolean>(false);
   type = input<'button' | 'submit' | 'reset'>('button');
   classes = signal('');
-
+  onClick = output<void>();
   ngOnInit() {
     this.updateClasses();
+  }
+
+  handleClick() {
+    this.onClick.emit();
   }
 
   ngOnChanges() {

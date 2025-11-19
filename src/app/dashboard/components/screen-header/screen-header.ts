@@ -1,4 +1,4 @@
-import { Component, inject, input } from '@angular/core';
+import { Component, inject, input, output } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ThemeText, ThemeButton, ThemedInput } from "@common/theme";
 import { MatIcon } from "@angular/material/icon";
@@ -10,6 +10,7 @@ import { MatIcon } from "@angular/material/icon";
   styles: ``,
 })
 export class ScreenHeader {
+  onCreate = output<void>();
   private _fb = inject(FormBuilder);
   title = input<string>('');
   showCreate = input<boolean>(false);

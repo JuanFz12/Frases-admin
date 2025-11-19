@@ -1,0 +1,52 @@
+<header>
+    <app-theme-text variant="smallTitle" tagName="h2" class="font-medium">
+        Nueva frase
+    </app-theme-text>
+</header>
+
+<form [formGroup]="myForm" (ngSubmit)="save()" class="mt-4">
+
+    <section class="mb-4">
+        <app-themed-input formControlName="phrase" placeholder="Ingrese la frase" type="text" name="phrase"
+            variant="textarea" [error]="formUtils.showError(myForm, 'phrase')"></app-themed-input>
+
+        @if (formUtils.showError(myForm, 'phrase')) {
+        <app-theme-text variant="label" tagName="p" class="text-red-500 text-sm mt-1">
+            {{ formUtils.getFieldError(myForm, 'phrase') }}
+        </app-theme-text>
+        }
+    </section>
+
+    <section class="mb-4">
+        <app-themed-input formControlName="color" placeholder="Ingrese el color" type="text" name="color"
+            [error]="formUtils.showError(myForm, 'color')"></app-themed-input>
+
+        @if (formUtils.showError(myForm, 'color')) {
+        <app-theme-text variant="label" tagName="p" class="text-red-500 text-sm mt-1">
+            {{ formUtils.getFieldError(myForm, 'color') }}
+        </app-theme-text>
+        }
+    </section>
+
+    <footer class="flex flex-row justify-end gap-4 mt-6">
+        <app-theme-button variant="secondary" (click)="close()" class="w-36">
+            <app-theme-text variant="label" tagName="span" class="text-[#2E4057] font-semibold cursor-pointer">
+                Cancelar
+            </app-theme-text>
+        </app-theme-button>
+
+        <app-theme-button variant="primary" class="w-56" type="submit">
+            <app-theme-text variant="label" tagName="span" class="text-white font-semibold cursor-pointer">
+                Crear
+            </app-theme-text>
+        </app-theme-button>
+    </footer>
+    @if (errorMessage()?.message) {
+    <div class="mt-2">
+        <app-theme-text variant="label" tagName="p" class="text-red-600">
+            {{ errorMessage()?.message }}
+        </app-theme-text>
+    </div>
+    }
+
+</form>

@@ -6,7 +6,7 @@ import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { firstValueFrom, map } from 'rxjs';
 import { HttpApiError, unwrapResponse } from '@common/helpers';
-import { PhrasesModelResponse } from '../model';
+import { PhraseModelResponse, PhrasesModelResponse } from '../model';
 const baseUrl = environment.apiUrl;
 
 @Injectable()
@@ -34,7 +34,23 @@ export class PhrasesDataSourceImpl implements PhrasesDataSource {
         }
     }
     async savePhrase(phrase: corePhraseFields): Promise<PhraseAttributes> {
-        throw new Error('Method not implemented.');
+        try {
+            const response = await firstValueFrom(
+                unwrapResponse(
+                    this.http.post<BackendResponse<PhraseModelResponse>>(`${baseUrl}/phrases`, phrase)
+                ).pipe(map((phrase) => (Phrase.toJson(phrase))))
+            );
+            return response;
+        } catch (err: any) {
+            const message = `${err.error.message} Reason: ${err.error.error}`;
+            const status =
+                err?.status ??
+                err?.statusCode ??
+                err?.response?.status ??
+                err?.error?.status ??
+                500;
+            throw new HttpApiError(status, message);
+        }
     }
     async deletePhrase(phraseId: number): Promise<void> {
         throw new Error('Method not implemented.');

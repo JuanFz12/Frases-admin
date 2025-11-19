@@ -1,5 +1,5 @@
 import { Component, input, model, signal } from '@angular/core';
-import { NgControl } from '@angular/forms';
+import { ControlValueAccessor, NgControl } from '@angular/forms';
 
 @Component({
   selector: 'app-themed-input',
