@@ -1,4 +1,4 @@
-import { AbstractControl, FormGroup, ValidationErrors } from "@angular/forms";
+import { AbstractControl, FormArray, FormGroup, ValidationErrors } from "@angular/forms";
 
 export type ValidatorKey =
     | 'required'
@@ -83,4 +83,39 @@ export class FormUtils {
             return exists ? { emailTaken: true } : null;
         };
     }
+    static getDirtyValues(form: FormGroup | FormArray): any {
+        let dirty: Record<string, any> = {};
+
+        if (form instanceof FormGroup) {
+            Object.keys(form.controls).forEach(key => {
+                const control = form.controls[key];
+
+                if (control instanceof FormGroup || control instanceof FormArray) {
+                    const childDirty = this.getDirtyValues(control);
+                    if (Object.keys(childDirty).length > 0) {
+                        dirty[key] = childDirty;
+                    }
+                } else if (control.dirty) {
+                    dirty[key] = control.value;
+                }
+            });
+        }
+
+        if (form instanceof FormArray) {
+            const arr = form.controls
+                .map(c => {
+                    if (c instanceof FormGroup || c instanceof FormArray) {
+                        const childDirty = this.getDirtyValues(c);
+                        return Object.keys(childDirty).length > 0 ? childDirty : null;
+                    }
+                    return c.dirty ? c.value : null;
+                })
+                .filter(v => v !== null);
+
+            if (arr.length > 0) return arr;
+        }
+
+        return dirty;
+    }
+
 }

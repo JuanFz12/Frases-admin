@@ -10,7 +10,7 @@ import { DynamicTagDirective } from '@common/helpers';
 export class ThemeText {
   text = input<string | null>(null);
 
-  variant = input<'title' | 'smallTitle' | 'subtitle' | 'label' | 'paragraph' | 'small'>('paragraph');
+  variant = input<'title' | 'smallTitle' | 'subtitle' | 'label' | "large" | 'paragraph' | 'small'>('paragraph');
   color = input<string>('text-gray-900');
   weight = input<string>('font-normal');
   tagName = input<'p' | 'span' | 'label' | 'h1' | 'h2' | 'h3'>('p');
@@ -25,6 +25,7 @@ export class ThemeText {
       smallTitle: "regular-text-3xl",
       label: 'regular-text-m',
       paragraph: 'regular-text-l',
+      large: 'regular-text-l',
       small: 'regular-text-s',
     };
 

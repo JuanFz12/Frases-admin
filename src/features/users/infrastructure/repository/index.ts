@@ -1,4 +1,4 @@
-import { PaginationParams, User, Pagination, CoreUser, UpdateUser } from '@common/interfaces';
+import { PaginationParams, User, Pagination, CreateUser, UpdateUser } from '@common/interfaces';
 import { inject, Injectable } from '@angular/core';
 import { UsersDataSource, UsersRepository } from '@features/users/domain';
 @Injectable()
@@ -10,7 +10,7 @@ export class UsersRepositoryImpl implements UsersRepository {
     getUserById(id: number): Promise<User> {
         return this.datasource.getUserById(id);
     }
-    createUser(user: CoreUser): Promise<User> {
+    createUser(user: CreateUser): Promise<User> {
         return this.datasource.createUser(user);
     }
     updateUser(id: number, user: UpdateUser): Promise<User> {

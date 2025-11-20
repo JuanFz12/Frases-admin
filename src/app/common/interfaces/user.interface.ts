@@ -5,5 +5,8 @@ export interface User {
     email: string;
 }
 
-export type CoreUser = Omit<User, 'id'>;
+type CoreUser = Omit<User, 'id'>;
+export interface CreateUser extends CoreUser {
+    password: string;
+}
 export type UpdateUser = Partial<CoreUser>;

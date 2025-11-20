@@ -5,7 +5,7 @@ export interface UsersModelResponse {
     pagination: Pagination;
 }
 
-interface UserModelResponse {
+export interface UserModelResponse {
     id: number;
     name: string;
     status: string;

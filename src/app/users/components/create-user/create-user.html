@@ -1,0 +1,89 @@
+<header>
+    <app-theme-text variant="smallTitle" tagName="h2" class="font-medium">
+        Nuevo Usuario
+    </app-theme-text>
+</header>
+
+<form [formGroup]="myForm" (ngSubmit)="save()" class="mt-4">
+
+    <section class="mb-4">
+        <app-theme-text variant="large" tagName="label" class="font-medium">
+            Nombre
+        </app-theme-text>
+        <app-themed-input formControlName="name" placeholder="Ingrese el nombre" type="text" name="name"
+            [error]="formUtils.showError(myForm, 'name')"></app-themed-input>
+
+        @if (formUtils.showError(myForm, 'name')) {
+        <app-theme-text variant="label" tagName="span" class="text-red-500 text-sm mt-1">
+            {{ formUtils.getFieldError(myForm, 'name') }}
+        </app-theme-text>
+        }
+    </section>
+
+    <section class="mb-4">
+        <app-theme-text variant="large" tagName="label" class="font-medium">
+            Correo electrónico
+        </app-theme-text>
+        <app-themed-input formControlName="email" placeholder="Ingrese el correo electrónico" type="text" name="email"
+            [error]="formUtils.showError(myForm, 'email')"></app-themed-input>
+
+        @if (formUtils.showError(myForm, 'email')) {
+        <app-theme-text variant="label" tagName="span" class="text-red-500 text-sm mt-1">
+            {{ formUtils.getFieldError(myForm, 'email') }}
+        </app-theme-text>
+        }
+    </section>
+
+    <section class="mb-4">
+        <app-theme-text variant="large" tagName="label" class="font-medium">
+            Contraseña
+        </app-theme-text>
+        <app-themed-input formControlName="password"  autocomplete="new-password" placeholder="Ingrese la contraseña"
+            type="password" name="password" [error]="formUtils.showError(myForm, 'password')"></app-themed-input>
+
+        @if (formUtils.showError(myForm, 'password')) {
+        <app-theme-text variant="label" tagName="span" class="text-red-500 text-sm mt-1">
+            {{ formUtils.getFieldError(myForm, 'password') }}
+        </app-theme-text>
+        }
+    </section>
+
+    <section class="mb-4">
+        <app-theme-text variant="large" tagName="label" class="font-medium">
+            Estado
+        </app-theme-text>
+        <app-themed-input formControlName="status" placeholder="Seleccione el estado" variant="select" type="text"
+            name="status" [error]="formUtils.showError(myForm, 'status')">
+            <option [value]="UserStatus.Active">Activo</option>
+            <option [value]="UserStatus.Inactive">Inactivo</option>
+        </app-themed-input>
+
+        @if (formUtils.showError(myForm, 'status')) {
+        <app-theme-text variant="label" tagName="span" class="text-red-500 text-sm mt-1">
+            {{ formUtils.getFieldError(myForm, 'status') }}
+        </app-theme-text>
+        }
+    </section>
+
+    <footer class="flex flex-row justify-end gap-4 mt-6">
+        <app-theme-button variant="secondary" (click)="close()" class="w-36">
+            <app-theme-text variant="label" tagName="span" class="text-[#2E4057] font-semibold cursor-pointer">
+                Cancelar
+            </app-theme-text>
+        </app-theme-button>
+
+        <app-theme-button variant="primary" class="w-56" type="submit">
+            <app-theme-text variant="label" tagName="span" class="text-white font-semibold cursor-pointer">
+                Crear
+            </app-theme-text>
+        </app-theme-button>
+    </footer>
+    @if (errorMessage()?.message) {
+    <div class="mt-2">
+        <app-theme-text variant="label" tagName="p" class="text-red-600">
+            {{ errorMessage()?.message }}
+        </app-theme-text>
+    </div>
+    }
+
+</form>

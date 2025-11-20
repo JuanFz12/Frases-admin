@@ -11,7 +11,7 @@ export class ThemedInput {
   name = input<string>('');
   type = input<string>('text');
   value = model<string>('');
-  variant = input<'input' | 'textarea'>('input');
+  variant = input<'input' | 'textarea' | 'select'>('input');
   disabled = signal(false);
   error = input<boolean>(false);
 
